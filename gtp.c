@@ -47,7 +47,8 @@ void init_engines(struct arguments arguments) {
 
     if (arguments.state != 0x3) {
         pthread_t r_thread;
-        pthread_create(&r_thread, NULL, read_engine, (void*)(intptr_t)arguments.state);
+        pthread_create(&r_thread, NULL, read_engine,
+            (void*)(intptr_t)arguments.state);
     }
 
     parity = 0x1;
@@ -146,7 +147,7 @@ void make_move(int state) {
         printf("read from fd: %i, output: %s", fd[parity][0], command);
 
         char* move = strdup(command + 2);
-        for (int c=0; c<strlen(move); ++c) {
+        for (int c = 0; c < strlen(move); ++c) {
             if (move[c] == '\n')
                 move[c] = '\0';
         }

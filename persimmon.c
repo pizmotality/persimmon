@@ -12,7 +12,8 @@ int main(int argc, char* argv[]) {
 
     // setup windows
     xcb_connection_t* connection = xcb_connect(NULL, NULL);
-    xcb_screen_t* screen = xcb_setup_roots_iterator(xcb_get_setup(connection)).data;
+    xcb_screen_t* screen =
+        xcb_setup_roots_iterator(xcb_get_setup(connection)).data;
 
     xcb_window_t m_window = create_window(
         connection, screen, 0, 0, 480, 384);
@@ -61,7 +62,8 @@ int main(int argc, char* argv[]) {
                 }
                 break;
             case XCB_BUTTON_RELEASE: ;
-                xcb_button_release_event_t* br = (xcb_button_release_event_t*)event;
+                xcb_button_release_event_t* br =
+                    (xcb_button_release_event_t*)event;
                 printf("button: %"PRIu8" released in window %"PRIu32","
                        " at (%"PRIi16", %"PRIi16")\n",
                     br->detail, br->event, br->event_x, br->event_y);
